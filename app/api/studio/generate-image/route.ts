@@ -144,7 +144,8 @@ export async function PUT(request: NextRequest) {
      * Documentation: https://replicate.com/ostris/flux-dev-lora-trainer
      */
     const training = await replicate.trainings.create(
-      "ostris/flux-dev-lora-trainer",
+      "ostris",
+      "flux-dev-lora-trainer",
       "e440909d3512c31646ee2e0c7d6f6f4923224863a6a10c494606e79fb5844497",
       {
         destination: `${process.env.REPLICATE_USERNAME || 'your-username'}/sarah-rodriguez-lora`,
