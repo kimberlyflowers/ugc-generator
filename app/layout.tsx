@@ -4,6 +4,9 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'UGC Video Generator',
   description: 'Generate authentic UGC videos with AI avatars',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
