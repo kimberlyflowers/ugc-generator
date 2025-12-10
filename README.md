@@ -1,249 +1,365 @@
-# UGC Video Generator
+# Sarah Rodriguez Studio
 
-Generate authentic User-Generated Content (UGC) videos with AI avatars powered by NanoBanana API.
+**Professional AI Influencer Content Creation Platform**
 
-![UGC Generator](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
+Generate authentic UGC videos and images for your AI influencer at production scale with ComfyUI backend - **99% cheaper than HeyGen!**
+
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-blue?style=for-the-badge&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)
+![ComfyUI](https://img.shields.io/badge/ComfyUI-Backend-green?style=for-the-badge)
 
-## Features
+## 🚀 Why ComfyUI Backend?
 
-- 🎬 **AI-Powered Video Generation** - Create UGC videos using NanoBanana AI
-- 📸 **Product Image Upload** - Drag & drop interface with Vercel Blob storage
-- 👤 **Avatar Selection** - Choose from authentic AI avatars (Sarah Rodriguez)
-- 📝 **Script Templates** - Pre-built templates for various UGC styles
-- 💾 **Video Download** - Download generated videos instantly
-- 🎨 **Modern UI** - Clean, professional design inspired by Arcads and Speel
+| Feature | HeyGen | **Sarah Studio (ComfyUI)** |
+|---------|--------|----------------------------|
+| Cost per video | $5-10 | **$0.10-0.50** ⚡ |
+| Character consistency | Limited | **Perfect (custom LoRA)** ✨ |
+| Customization | Basic | **Full control** 🎨 |
+| Batch generation | Limited | **Unlimited** 🔥 |
+| **Monthly (100 videos/day)** | **$15,000-30,000** | **$80-150** 💰 |
 
-## Tech Stack
+**Savings: 99%!**
 
+## ✨ Features
+
+### Video Studio
+- 🎬 **Talking Head Videos** - Perfect lip-sync with ElevenLabs voice
+- 🌟 **Lifestyle Content** - Natural movement with AnimateDiff
+- 📦 **Product Showcases** - Sarah holding/presenting products
+- 🎥 **Multi-Platform** - TikTok (9:16), Reels, Shorts, Instagram Feed (1:1)
+
+### Image Studio
+- 📸 **High-Quality Images** - Instagram posts, stories, carousels
+- 🎨 **Product Photography** - Professional product shots with Sarah
+- 🖼️ **Perfect Consistency** - Custom LoRA trained on Sarah's face
+- 🔄 **Batch Generation** - Create 10-20 variations overnight
+
+### Professional Features
+- 📚 **Media Library** - Organized content with metadata
+- 💰 **Cost Tracking** - Per-generation and monthly analytics
+- ⚡ **Scene Builder** - Outfit, background, emotion, product controls
+- 📝 **BLOOM Script Templates** - Pre-built messaging for brand
+- 🎯 **Batch Jobs** - Queue 10-20 videos for overnight processing
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  Next.js Frontend (Vercel)                              │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐ │
+│  │ Video Studio │  │ Image Studio │  │   Library    │ │
+│  └──────────────┘  └──────────────┘  └──────────────┘ │
+└──────────────────────┬──────────────────────────────────┘
+                       │ API Routes
+┌──────────────────────┴──────────────────────────────────┐
+│  ComfyUI Backend (RunPod/Vast.ai)                       │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │  Workflows                                       │   │
+│  │  • Sarah_TalkingHead  (Lip-sync with Wav2Lip)  │   │
+│  │  • Sarah_Lifestyle    (AnimateDiff motion)      │   │
+│  │  • Sarah_Product      (ControlNet + product)    │   │
+│  │  • Sarah_Still        (Flux + LoRA images)      │   │
+│  └─────────────────────────────────────────────────┘   │
+│                                                          │
+│  Models: Flux Dev + Sarah LoRA + AnimateDiff + Wav2Lip  │
+└──────────────────────────────────────────────────────────┘
+```
+
+## 📦 Tech Stack
+
+### Frontend
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
+- **State**: Zustand
 - **Storage**: Vercel Blob
-- **AI**: NanoBanana API
-- **Icons**: Lucide React
 
-## Getting Started
+### Backend
+- **ComfyUI**: Production workflow engine
+- **Flux Dev**: Base image generation model
+- **Custom LoRA**: Sarah Rodriguez face consistency
+- **AnimateDiff**: Video motion
+- **Wav2Lip**: Lip synchronization
+- **LivePortrait**: Facial animation
+- **ElevenLabs**: Voice generation
 
-### Prerequisites
+### Infrastructure
+- **RunPod or Vast.ai**: GPU compute ($0.30-0.50/hour)
+- **Replicate**: LoRA training ($5 one-time)
 
-- Node.js 18+ installed
-- A Vercel account (for Blob storage)
-- NanoBanana API key
+## 🚀 Quick Start
 
-### Installation
-
-1. **Clone the repository**
-
-```bash
-git clone https://github.com/yourusername/ugc-generator.git
-cd ugc-generator
-```
-
-2. **Install dependencies**
+### 1. Clone & Install
 
 ```bash
+git clone https://github.com/yourusername/sarah-rodriguez-studio.git
+cd sarah-rodriguez-studio
 npm install
 ```
 
-3. **Set up environment variables**
-
-Copy the example environment file:
+### 2. Set Up Environment Variables
 
 ```bash
 cp .env.example .env
 ```
 
-Edit `.env` and add your credentials:
+Edit `.env`:
 
 ```env
-# Vercel Blob Storage Token
-BLOB_READ_WRITE_TOKEN=your_vercel_blob_token_here
+# Vercel Blob Storage
+BLOB_READ_WRITE_TOKEN=vercel_blob_xxx
 
-# NanoBanana API Key
-NANOBANANA_API_KEY=your_nanobanana_api_key_here
+# ComfyUI Backend (your RunPod/Vast.ai instance)
+COMFYUI_API_URL=https://xxxxx-8188.proxy.runpod.net
+
+# Replicate (for LoRA training)
+REPLICATE_API_TOKEN=r8_xxx
+REPLICATE_USERNAME=your-username
+
+# ElevenLabs (for voice)
+ELEVENLABS_API_KEY=sk_xxx
+ELEVENLABS_VOICE_ID=sarah_voice_id
 ```
 
-#### Getting Vercel Blob Token
+### 3. Train Sarah's LoRA
 
-1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
-2. Select your project (or create a new one)
-3. Navigate to **Storage** → **Blob**
-4. Click **Create Database**
-5. Copy the `BLOB_READ_WRITE_TOKEN` from the `.env.local` tab
+**Upload 15-20 images of Sarah Rodriguez** to train her custom LoRA for perfect character consistency.
 
-#### Getting NanoBanana API Key
+See [docs/COMFYUI_SETUP.md](docs/COMFYUI_SETUP.md#step-1-train-sarahs-lora) for detailed instructions.
 
-1. Visit [NanoBanana](https://nanobanana.ai)
-2. Sign up or log in to your account
-3. Navigate to API settings
-4. Generate a new API key
-5. Copy the API key to your `.env` file
+```bash
+# Using Replicate
+replicate trainings create \
+  ostris/flux-dev-lora-trainer:e440909d \
+  --destination your-username/sarah-rodriguez-lora \
+  --input input_images=@sarah_training_images.zip \
+  --input trigger_word="sarah_rodriguez"
+```
 
-### Development
+**Cost**: $5 one-time | **Time**: 30-60 minutes
 
-Run the development server:
+### 4. Deploy ComfyUI Backend
+
+See [docs/COMFYUI_SETUP.md](docs/COMFYUI_SETUP.md#step-2-deploy-comfyui-on-runpod) for full deployment guide.
+
+**Option A: RunPod (Recommended)**
+- RTX 4090: $0.40/hour
+- Reliable, easy setup
+- Auto-scaling available
+
+**Option B: Vast.ai (Cheapest)**
+- RTX 4090: $0.20-0.30/hour
+- 50% cheaper
+- Spot instances
+
+### 5. Run Development Server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000/studio](http://localhost:3000/studio)
 
-### Building for Production
+## 📖 Documentation
+
+- **[ComfyUI Setup Guide](docs/COMFYUI_SETUP.md)** - Complete deployment instructions
+- **[Workflow Documentation](docs/WORKFLOWS.md)** - Custom workflow details
+- **[API Reference](docs/API.md)** - API endpoints and usage
+
+## 💰 Cost Breakdown
+
+### Per Generation
+
+| Type | ComfyUI | HeyGen | Savings |
+|------|---------|--------|---------|
+| Still Image | $0.003 | N/A | - |
+| 15s Video | $0.013 | $3-5 | **99.7%** |
+| 30s Talking Head | $0.027 | $5-10 | **99.5%** |
+| 60s Lifestyle | $0.053 | $10-15 | **99.6%** |
+
+### Monthly (100 videos/day)
+
+- **ComfyUI**: $80-150/month
+- **HeyGen**: $15,000-30,000/month
+- **Total Savings**: **$14,850-29,850/month**
+
+## 🎬 Workflows
+
+### 1. Sarah_TalkingHead
+
+Perfect for product reviews, testimonials, BLOOM brand content.
+
+**Features**:
+- Lip-sync with Wav2Lip
+- Natural facial expressions with LivePortrait
+- ElevenLabs voice integration
+- Customizable emotions
+
+**Time**: ~2-4 minutes | **Cost**: $0.02-0.03
+
+### 2. Sarah_Lifestyle
+
+Casual scenes, morning routines, day-in-the-life content.
+
+**Features**:
+- Smooth motion with AnimateDiff
+- Natural body movement
+- Scene transitions
+
+**Time**: ~4-8 minutes | **Cost**: $0.03-0.05
+
+### 3. Sarah_Product
+
+Product showcases, unboxings, how-to videos.
+
+**Features**:
+- Product image compositing
+- Natural hand positioning with ControlNet
+- Multiple camera angles
+
+**Time**: ~3-6 minutes | **Cost**: $0.02-0.04
+
+### 4. Sarah_Still
+
+High-quality images for Instagram, website, ads.
+
+**Features**:
+- Multiple aspect ratios (1:1, 9:16, 4:5)
+- Perfect face consistency
+- Professional photography quality
+
+**Time**: ~30 seconds | **Cost**: $0.003-0.005
+
+## 🔄 Batch Generation
+
+Generate 10-20 videos overnight:
+
+```typescript
+POST /api/studio/batch-generate
+{
+  "workflow": "talking_head",
+  "variations": [
+    {
+      "script": "BLOOM serum review script 1",
+      "outfit": "white robe",
+      "background": "modern bathroom"
+    },
+    // ... 19 more variations
+  ]
+}
+```
+
+The system will:
+1. Queue all jobs to ComfyUI
+2. Process in parallel
+3. Save to Media Library
+4. Send notification when complete
+
+**Cost for 20 videos**: ~$0.50 | **HeyGen equivalent**: $100-200
+
+## 📊 Media Library
+
+All generated content automatically saved with:
+- Thumbnail previews
+- Metadata (outfit, scene, script)
+- Cost tracking
+- Download/export options
+- Tagging system
+
+## 🔧 Development
+
+### Project Structure
+
+```
+sarah-rodriguez-studio/
+├── app/
+│   ├── studio/page.tsx           # Main studio interface
+│   └── api/
+│       └── studio/
+│           ├── comfyui-generate/ # ComfyUI integration
+│           ├── generate-video/   # Video generation
+│           └── generate-image/   # Image generation
+├── components/
+│   ├── StudioLayout.tsx          # Main layout
+│   ├── SceneBuilder.tsx          # Scene configuration
+│   ├── ScriptEditor.tsx          # Script templates
+│   └── OutputPresets.tsx         # Platform presets
+├── lib/
+│   ├── comfyui-client.ts         # ComfyUI API client
+│   ├── store.ts                  # Zustand state management
+│   └── studio-constants.ts       # Templates & presets
+├── types/
+│   ├── studio.ts                 # Studio types
+│   └── comfyui.ts                # ComfyUI types
+└── docs/
+    └── COMFYUI_SETUP.md          # Deployment guide
+```
+
+### Adding Custom Workflows
+
+1. Create workflow JSON in ComfyUI
+2. Export workflow
+3. Add to `lib/comfyui-client.ts`
+4. Update types in `types/comfyui.ts`
+
+## 🚀 Deployment
+
+### Frontend (Vercel)
 
 ```bash
-npm run build
-npm start
+# Push to GitHub
+git push origin main
+
+# Deploy on Vercel
+# - Import repository
+# - Add environment variables
+# - Deploy
 ```
 
-## How to Use
+### Backend (RunPod/Vast.ai)
 
-1. **Upload Product Image**: Drag and drop or click to upload your product image (JPEG, PNG, or WebP)
-2. **Select Avatar**: Choose Sarah Rodriguez (more avatars coming soon!)
-3. **Choose Script Template**: Select from templates like Product Review, Unboxing, Before & After, etc.
-4. **Generate Video**: Click "Generate UGC Video" and wait for the AI to create your video
-5. **Download**: Once complete, download your video and use it in your marketing campaigns
+See [docs/COMFYUI_SETUP.md](docs/COMFYUI_SETUP.md) for complete deployment guide.
 
-## Project Structure
+## 🐛 Troubleshooting
 
-```
-ugc-generator/
-├── app/
-│   ├── api/
-│   │   ├── upload/          # Vercel Blob upload endpoint
-│   │   └── generate/        # NanoBanana video generation endpoint
-│   ├── globals.css          # Global styles with Tailwind
-│   ├── layout.tsx           # Root layout
-│   └── page.tsx             # Main application page
-├── components/
-│   ├── DragDropUploader.tsx # Image upload component
-│   ├── AvatarSelector.tsx   # Avatar selection component
-│   ├── ScriptTemplates.tsx  # Script template selector
-│   └── VideoPlayer.tsx      # Video player with download
-├── lib/
-│   ├── constants.ts         # App constants (avatars, templates)
-│   └── utils.ts             # Utility functions
-├── types/
-│   └── index.ts             # TypeScript type definitions
-└── public/                  # Static assets
+### ComfyUI connection fails
+```bash
+# Check if ComfyUI is running
+curl $COMFYUI_API_URL/system_stats
+
+# Verify API URL is correct (must include :8188)
 ```
 
-## API Routes
-
-### POST /api/upload
-
-Upload product images to Vercel Blob storage.
-
-**Request**: `multipart/form-data` with file
-**Response**:
-```json
-{
-  "success": true,
-  "url": "https://..."
-}
+### LoRA not loading
+```bash
+# Verify LoRA file is in ComfyUI/models/loras/
+# Filename must match: sarah_rodriguez.safetensors
 ```
 
-### POST /api/generate
+### Out of memory
+- Reduce image resolution in workflow
+- Lower batch size
+- Use Flux Schnell instead of Dev
+- Upgrade to larger GPU
 
-Generate UGC video using NanoBanana API.
+## 📈 Roadmap
 
-**Request**:
-```json
-{
-  "productImageUrl": "https://...",
-  "avatarId": "sarah-rodriguez",
-  "scriptTemplateId": "product-review"
-}
-```
+- [ ] Live streaming integration
+- [ ] Voice cloning from samples
+- [ ] Multi-language support
+- [ ] A/B testing framework
+- [ ] Analytics dashboard
+- [ ] Mobile app
 
-**Response**:
-```json
-{
-  "success": true,
-  "videoUrl": "https://..."
-}
-```
+## 🤝 Contributing
 
-## Configuration
+This is a production platform for Sarah Rodriguez AI influencer business. Internal use only.
 
-### Adding More Avatars
+## 📄 License
 
-Edit `lib/constants.ts`:
-
-```typescript
-export const AVATARS: Avatar[] = [
-  {
-    id: 'sarah-rodriguez',
-    name: 'Sarah Rodriguez',
-    image: 'https://...',
-    description: 'Authentic lifestyle content creator',
-  },
-  // Add more avatars here
-]
-```
-
-### Adding More Script Templates
-
-Edit `lib/constants.ts`:
-
-```typescript
-export const SCRIPT_TEMPLATES: ScriptTemplate[] = [
-  // Add your custom templates
-  {
-    id: 'custom-template',
-    name: 'Custom Template',
-    description: 'Your description',
-    category: 'Custom',
-    template: 'Your script template here...',
-  },
-]
-```
-
-## Deployment
-
-### Deploy to Vercel (Recommended)
-
-1. Push your code to GitHub
-2. Import your repository on [Vercel](https://vercel.com)
-3. Add environment variables in Vercel project settings
-4. Deploy!
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/ugc-generator)
-
-## Troubleshooting
-
-### Upload fails with 500 error
-
-- Ensure `BLOB_READ_WRITE_TOKEN` is set in your environment variables
-- Check that your Vercel Blob storage is properly configured
-- Verify the image is under 10MB and is a valid format (JPEG, PNG, WebP)
-
-### Video generation fails
-
-- Verify `NANOBANANA_API_KEY` is correctly set
-- Check the NanoBanana API documentation for rate limits
-- Ensure you have sufficient API credits
-- Check the browser console and server logs for detailed error messages
-
-### Tailwind styles not working
-
-- Ensure you've run `npm install`
-- Check that `tailwind.config.ts` includes all necessary content paths
-- Restart the development server
-
-## License
-
-MIT License - feel free to use this project for your own purposes!
-
-## Support
-
-For issues and questions:
-- Open an issue on GitHub
-- Check the [Next.js documentation](https://nextjs.org/docs)
-- Review [Vercel Blob documentation](https://vercel.com/docs/storage/vercel-blob)
+Proprietary - All rights reserved
 
 ---
 
-Built with ❤️ using Next.js, Tailwind CSS, and NanoBanana AI
+**Built for production AI influencer business** | Powered by ComfyUI, Flux Dev, and ElevenLabs
